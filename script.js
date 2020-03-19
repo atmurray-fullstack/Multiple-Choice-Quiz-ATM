@@ -14,18 +14,40 @@ const qAll = [
 // answer value array
 var playerAns = [] || playerAns;
 //array for player name
-playerName = [];
+var playerName = [];
 //time counter 
-counter = 60;
+var counter = 60;
+//random question array choose variable
+var randomQ = 0;
+//confirm ready variable
+var ready = confirm('Are you ready?');
+//array to make sure questions are not repeated
+var oldQ = [];
 
 
-
-//setInterval variable to make timer
+//setInterval variable to make timer and display in <p> in 
 var playTime = setInterval(function () {
     counter--;
     console.log(counter)
     document.getElementById('countDown').innerHTML = 'TIME REMAINING: '+counter;
     if (counter == 0) {
         clearInterval(playTime)
+        alert('Times is up! Let\'s checkout your score')
     }
-}, 1000);
+}, 100);
+
+
+randomQ = Math.floor(Math.random()*qAll.length);
+
+//set button value equal to answers
+document.getElementById('question-1').value=
+qAll[randomQ][1][0];
+
+//set h1 innerText equal to question
+document.querySelector('h1').innerText = qAll[randomQ][0];
+
+//console.log(randomQ)
+
+
+
+
