@@ -1,0 +1,32 @@
+
+
+
+
+
+
+
+.buttonAns{
+    height:50px;
+    width:200px;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:6px 0 6px 0;
+    border: solid black 2px;
+    border-radius:6px;
+}
+
+.hr{
+    border-top-width:5px;
+    border-top-style:solid;
+    border-top-color: black;
+    margin-top:4px;
+}
+
+#valid{
+border-top-style:solid;
+border-top-color: black;
+border-top-width: 4px;
+margin-top:12px;
+padding-top:10px;
+
+}

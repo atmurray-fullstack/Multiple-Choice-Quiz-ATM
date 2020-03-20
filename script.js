@@ -51,15 +51,15 @@ var oldQ = [];
 
 
 //setInterval variable to make timer and display in <p> in 
-// var playTime = setInterval(function () {
-//     counter--;
-//     console.log(counter)
-//     document.getElementById('countDown').innerHTML = 'TIME REMAINING: ' + counter;
-//     if (counter == 0) {
-//         clearInterval(playTime)
-//         alert('Times is up! Let\'s checkout your score')
-//     }
-// }, 100);
+var playTime = setInterval(function () {
+    counter--;
+    console.log(counter)
+    document.getElementById('countDown').innerHTML = 'TIME REMAINING: ' + counter;
+    if (counter == 0) {
+        clearInterval(playTime)
+        alert('Times is up! Let\'s checkout your score')
+    }
+}, 100);
 
 if (ready) {
 
