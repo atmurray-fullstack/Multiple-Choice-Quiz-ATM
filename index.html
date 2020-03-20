@@ -16,7 +16,12 @@
 
         <!-- Top row container h1 and <p> for countdown timer-->
         <div class='row text-center mt-5'>
-            <div class='col-10' style='background-color: blue;'>
+            <div class = col-2 style = "background-color: hotpink;">
+                <p id = 'scoreDis'>
+                    SCORE:
+                </p>
+            </div>
+            <div class='col-8' style='background-color: blue;'>
                 <h1>This is a random code quiz with multiple choice answers.
                     You have 60 seconds to answer as many questions as possible.
                     If you get a high score you will be able to input your name at the end.
@@ -30,7 +35,7 @@
 
 
         <div class='row'>
-            <div class='col-6 text-left mx-auto' style="background-color: red;">
+            <div class='col-6 text-left mx-auto mt-5' style="background-color: red;">
                 <form id = 'name' style ='display:none;'>
                     <label for='player'>Enter your name.</label>
                     <input id ='player' name ='player' type ='text'>

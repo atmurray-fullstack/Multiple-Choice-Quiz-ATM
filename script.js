@@ -4,13 +4,14 @@ var a1 = document.getElementById('answer-1');
 var a2 = document.getElementById('answer-2');
 var a3 = document.getElementById('answer-3');
 var a4 = document.getElementById('answer-4');
-//answers form
+
+var scoreDis = document.getElementById('scoreDis');
 var ansForm = document.getElementById('answers');
 var valid = document.getElementById('valid');
 
 
 
-//immutable variables
+
 
 //question array
 const qAll = [
@@ -32,6 +33,8 @@ var counter = 60;
 
 //random question array choose variable
 var randomQ = 0;
+
+var score = 0;
 
 
 //confirm ready variable
@@ -81,11 +84,14 @@ a1.addEventListener('click', function () {
     console.log(qAll[randomQ][1][1])
     console.log(playerAns)
 
-if(qAll[randomQ][1][1]){
-    valid.innerText = 'Correct Answer';
-}else {
-    valid.innerText = 'Incorrect Answer';
-}
+    if (qAll[randomQ][1][1]) {
+        valid.innerText = 'Correct Answer';
+        score++
+        scoreDis.innerText = 'Score: ' + score;
+
+    } else {
+        valid.innerText = 'Incorrect Answer';
+    }
 
 
     randomQ = Math.floor(Math.random() * qAll.length)
@@ -105,11 +111,11 @@ a2.addEventListener('click', function () {
     console.log(qAll[randomQ][2][1])
     console.log(playerAns)
 
-if(qAll[randomQ][2][1]){
-    valid.innerText = 'Correct Answer';
-}else {
-    valid.innerText = 'Incorrect Answer';
-}
+    if (qAll[randomQ][2][1]) {
+        valid.innerText = 'Correct Answer';
+    } else {
+        valid.innerText = 'Incorrect Answer';
+    }
 
 
     randomQ = Math.floor(Math.random() * qAll.length)
@@ -130,11 +136,11 @@ a3.addEventListener('click', function () {
     console.log(qAll[randomQ][3][1])
     console.log(playerAns)
 
-if(qAll[randomQ][3][1]){
-    valid.innerText = 'Correct Answer';
-}else {
-    valid.innerText = 'Incorrect Answer';
-}
+    if (qAll[randomQ][3][1]) {
+        valid.innerText = 'Correct Answer';
+    } else {
+        valid.innerText = 'Incorrect Answer';
+    }
 
 
     randomQ = Math.floor(Math.random() * qAll.length)
@@ -154,11 +160,11 @@ a4.addEventListener('click', function () {
     console.log(qAll[randomQ][4][1])
     console.log(playerAns)
 
-if(qAll[randomQ][4][1]){
-    valid.innerText = 'Correct Answer';
-}else {
-    valid.innerText = 'Incorrect Answer';
-}
+    if (qAll[randomQ][4][1]) {
+        valid.innerText = 'Correct Answer';
+    } else {
+        valid.innerText = 'Incorrect Answer';
+    }
 
 
     randomQ = Math.floor(Math.random() * qAll.length)
