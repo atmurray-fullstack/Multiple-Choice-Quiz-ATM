@@ -4,12 +4,16 @@ var a1 = document.getElementById('1');
 var a2 = document.getElementById('2');
 var a3 = document.getElementById('3');
 var a4 = document.getElementById('4');
+var subBut = document.getElementById('submitbut')
+var player = document.getElementById('player');
 var formAns = document.getElementById('answers');
 var formReadyBut = document.getElementById('formReady');
-
+var nameDiv = document.getElementById('name');
 var scoreDis = document.getElementById('scoreDis');
 var ansForm = document.getElementById('answers');
 var valid = document.getElementById('valid');
+
+
 
 //question array
 const qAll = [
@@ -30,7 +34,7 @@ const qAll = [
 
 ]
 // answer value array
-var playerAns = [] || playerAns;
+var playerArr = []
 //array for player name
 var playerName = [];
 //time counter 
@@ -52,13 +56,16 @@ function rando() {
 function countDown() {
     var playTime = setInterval(function () {
         counter--;
-        console.log(counter)
+        
         document.getElementById('countDown').innerHTML = 'TIME REMAINING: ' + counter;
         if (counter <= 0) {
             clearInterval(playTime)
             alert('Times is up! Let\'s checkout your score')
+            ansForm.style.display = 'none'
+            nameDiv.style.display = 'block';
+
         }
-    }, 1000);
+    }, 10);
 }
 
 function questionsSet() {
@@ -77,8 +84,30 @@ function questionsSet() {
 //////////////////////////
 //////////////////////////
 
-//Initial h1 game statement
+
+
+
+
+
+
+
+
+//Initial h1 game statement and local storage
 h1Elem.innerText = 'You will have 60 seconds to answer as many questions as you can. Good Luck!!'
+playerArr = JSON.parse(localStorage.getItem('players'))
+
+if (playerArr === null) {
+    localStorage.setItem('players', JSON.stringify([['player', 0]]));
+    // console.log(JSON.parse(localStorage.getItem('players')));
+    playerArr=localStorage.getItem(JSON.parse(localStorage.getItem('players')))
+    // console.log(playerArr)
+} else {
+    console.log(localStorage.getItem('players'));
+    playerArr = JSON.parse(localStorage.getItem('players'));
+}
+
+
+
 formReadyBut.addEventListener('click', function () {
     formReadyBut.style.display = 'none'
     ansForm.style.display = 'block'
@@ -92,7 +121,7 @@ formReadyBut.addEventListener('click', function () {
 formAns.addEventListener('click', function (event) {
     var index = event.target.id;
     index = parseInt(index);
-    
+
 
     if (qAll[randomQ][index][1]) {
         valid.innerText = 'Correct Answer';
@@ -113,5 +142,9 @@ formAns.addEventListener('click', function (event) {
     a4.value = qAll[randomQ][4][0];
 
 })
+
+function topPlayers(){
+
+}
 
 
