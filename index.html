@@ -16,20 +16,17 @@
 
         <!-- Top row container h1 and <p> for countdown timer-->
         <div class='row text-center mt-5'>
-            <div class = col-2 style = "background-color: hotpink;">
-                <p id = 'scoreDis'>
+            <div class=col-2 style="background-color: hotpink;">
+                <p id='scoreDis'>
                     SCORE:
                 </p>
             </div>
             <div class='col-8' style='background-color: blue;'>
-                <h1>This is a random code quiz with multiple choice answers.
-                    You have 60 seconds to answer as many questions as possible.
-                    If you get a high score you will be able to input your name at the end.
-                    Confirm when you are ready.
-                </h1>
+                <h2>
+                </h2>
             </div>
-            <div class = 'col-2' style ='background-color: gray;'>
-                <p id = 'countDown'></p>
+            <div class='col-2' style='background-color: gray;'>
+                <p id='countDown'></p>
             </div>
         </div>
 
@@ -37,25 +34,36 @@
         <div class='row'>
             <div class='col-8
              text-left mx-auto mt-5' style="background-color: red;">
-                <form id = 'name' style ='display:none;'>
+                <form id='name' style='display:none;'>
                     <label for='player'>Enter your name.</label>
-                    <input id ='player' name ='player' type ='text'>
+                    <input id='player' name='player' type='text'>
                 </form>
+                <div class='row'>
+                    <div class='col-8 mx auto'>
+                        <!--Answer button form-->
+                        <form id='answers' style='display:none;'>
+                            <input class='buttonAns' id='1' type='button' value=''>
+                            <br>
+                            <input class='buttonAns' id='2' type='button' value=''>
+                            <br>
+                            <input class='buttonAns' id='3' type='button' value=''>
+                            <br>
+                            <input class='buttonAns' id='4' type='button' value=''>
 
-                <!--Answer button form-->
-                <form id ='answers'>
-                    <input class = 'buttonAns' id='answer-1' type='button' value = ''>
-                    <br>
-                    <input class = 'buttonAns' id='answer-2' type='button' value = ''>
-                    <br>
-                    <input class = 'buttonAns' id='answer-3' type='button' value =''>
-                    <br>
-                    <input class = 'buttonAns' id='answer-4' type='button' value =''>
+                        </form>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-4 mx-auto'>
+                        <form id='formReady'>
+                            <input id='ready' class='btn btn-primary' value='Click When Ready'>
+                        </form>
+                    </div>
 
-                </form>
+                </div>
             </div>
-            <div class = 'col-9 text-center mx-auto'>
-                <p id =valid>
+            <div class='col-9 text-center mx-auto'>
+                <p id=valid>
                     placeholder for correct/incorrect text.
                 </p>
             </div>
