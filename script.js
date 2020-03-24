@@ -36,7 +36,7 @@ const qAll = [
 // answer value array
 var playerArr = []
 //array for player name
-var playerName = [];
+var playerName = "";
 //time counter 
 var counter = 60;
 //random question array choose variable
@@ -143,8 +143,9 @@ formAns.addEventListener('click', function (event) {
 
 })
 
-function topPlayers(){
-
-}
+nameDiv.addEventListener('click', function(){
+    playerName = nameDiv.children[0].value
+    console.log(playerName);
+})
 
 
