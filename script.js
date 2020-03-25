@@ -4,6 +4,7 @@ var a1 = document.getElementById('1');
 var a2 = document.getElementById('2');
 var a3 = document.getElementById('3');
 var a4 = document.getElementById('4');
+var rowQ = document.getElementById('scoreQuestTime');
 var subBut = document.getElementById('submitbut')
 var player = document.getElementById('player');
 var formAns = document.getElementById('answers');
@@ -56,16 +57,17 @@ function rando() {
 function countDown() {
     var playTime = setInterval(function () {
         counter--;
-        
+
         document.getElementById('countDown').innerHTML = 'TIME REMAINING: ' + counter;
         if (counter <= 0) {
             clearInterval(playTime)
             alert('Times is up! Let\'s checkout your score')
             ansForm.style.display = 'none'
+            rowQ.style.display = 'none'
             nameDiv.style.display = 'block';
 
         }
-    }, 10);
+    }, 100);
 }
 
 function questionsSet() {
@@ -99,12 +101,9 @@ playerArr = JSON.parse(localStorage.getItem('players'))
 if (playerArr === null) {
     localStorage.setItem('players', JSON.stringify([['player', 0]]));
     // console.log(JSON.parse(localStorage.getItem('players')));
-    playerArr=localStorage.getItem(JSON.parse(localStorage.getItem('players')))
+    playerArr = localStorage.getItem(JSON.parse(localStorage.getItem('players')))
     // console.log(playerArr)
-} else {
-    console.log(localStorage.getItem('players'));
-    playerArr = JSON.parse(localStorage.getItem('players'));
-}
+} 
 
 
 
@@ -143,9 +142,17 @@ formAns.addEventListener('click', function (event) {
 
 })
 
-nameDiv.addEventListener('click', function(){
-    playerName = nameDiv.children[0].value
-    console.log(playerName);
+nameDiv.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        playerName = nameDiv.children[0].value
+        // console.log(playerName);
+        playerArr.push([playerName, score])
+        // console.log(playerArr)
+        localStorage.setItem('players', JSON.stringify(playerArr))
+        playerArr=[];
+
+    }
 })
 
 
