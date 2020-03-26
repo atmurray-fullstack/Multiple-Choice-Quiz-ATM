@@ -74,7 +74,7 @@ function countDown() {
 
 
         }
-    }, 100);
+    }, 1000);
 }
 
 function questionsSet() {
@@ -110,7 +110,7 @@ h1Elem.innerText = 'You will have 60 seconds to answer as many questions as you 
 playerArr = JSON.parse(localStorage.getItem('players'))
 
 if (playerArr === null) {
-    localStorage.setItem('players', JSON.stringify([['player', 0]]));
+    localStorage.setItem('players', JSON.stringify([['Player', 0]]));
     // console.log(JSON.parse(localStorage.getItem('players')));
     playerArr = localStorage.getItem(JSON.parse(localStorage.getItem('players')))
     // console.log(playerArr)
