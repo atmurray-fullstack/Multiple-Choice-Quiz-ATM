@@ -80,6 +80,7 @@ function countDown() {
 function questionsSet() {
     if (ready) {
         randomQ = rando();
+        noRepeat(randomQ);
         //set button value equal to answers
         a1.value = qAll[randomQ][1][0];
         a2.value = qAll[randomQ][2][0];
@@ -90,6 +91,32 @@ function questionsSet() {
 
     }
 }
+
+
+function noRepeat(x) {
+    var reRun = false;
+    if (oldQ.length === qAll.length) {
+        counter = 0;
+        oldQ=[];
+    
+
+    } else {
+        for (let i = 0; i < oldQ.length; i++) {
+            if (x === oldQ[i]) {
+                reRun = true;
+                break;
+            }
+        }
+    }
+    if (reRun === true) {
+        randomQ = rando();
+        randomQ = noRepeat(randomQ);
+    }
+    oldQ.push(randomQ);
+    return randomQ;
+}
+
+
 //////////////////////////
 //////////////////////////
 
@@ -153,6 +180,9 @@ formAns.addEventListener('click', function (event) {
 
 
     randomQ = rando()
+
+    noRepeat(randomQ);
+
     h1Elem.innerText = qAll[randomQ][0];
     a1.value = qAll[randomQ][1][0];
     a2.value = qAll[randomQ][2][0];
