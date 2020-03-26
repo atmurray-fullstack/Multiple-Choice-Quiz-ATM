@@ -15,66 +15,89 @@
     <div class='container'>
 
         <!-- Top row container h1 and <p> for countdown timer-->
-        <div id = 'scoreQuestTime' class='row text-center mt-5'>
-            <div class=col-2 style="background-color: hotpink;">
+        <div id='scoreQuestTime' class='row mt-5 mx-auto'>
+            <div class='col-2 text-left'>
                 <p id='scoreDis'>
                     SCORE:
                 </p>
             </div>
-            <div class='col-8' style='background-color: blue;'>
+            <div class='col-7 text-center'>
                 <h2>
                 </h2>
             </div>
-            <div class='col-2' style='background-color: gray;'>
+            <div class='col-3 text-left'>
                 <p id='countDown'></p>
             </div>
         </div>
 
-
         <div class='row'>
-            <div class='col-8
-             text-left mx-auto mt-5' style="background-color: red;">
-                <form id='name' class='text-center' style='display:none;'>
-
-                    <input id='player' type='text' value='Enter Your Name'>
-                    <input id='again' class='btn btn-warning' value="Click to try again">
+            <div class='col-6 mx-auto text-center'>
+                <form id='formReady'>
+                    <input id='ready' class='btn btn-primary' value='Click When Ready'>
                 </form>
-
-
-                <div class='row'>
-                    <div class='col-8 mx auto'>
-                        <!--Answer button form-->
-                        <form id='answers' style='display:none;'>
-                            <input class='buttonAns' id='1' type='button' value=''>
-                            <br>
-                            <input class='buttonAns' id='2' type='button' value=''>
-                            <br>
-                            <input class='buttonAns' id='3' type='button' value=''>
-                            <br>
-                            <input class='buttonAns' id='4' type='button' value=''>
-
-                        </form>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-6 mx-auto text-center'>
-                        <form id='formReady'>
-                            <input id='ready' class='btn btn-primary' value='Click When Ready'>
-                        </form>
-                    </div>
-
-                </div>
             </div>
-            <div class='col-9 text-center mx-auto'>
-                <p id=valid>
-                    placeholder for correct/incorrect text.
-                </p>
-            </div>
+
         </div>
 
 
 
+
+        <!--Row for answer buttons-->
+        <div class='row mt-5'>
+            <div class='col-4 mx auto'>
+                <!--Answer button form-->
+                <form id='answers'>
+                    <input class='buttonAns' id='1' type='button' value=''>
+                    <br>
+                    <input class='buttonAns' id='2' type='button' value=''>
+                    <br>
+                    <input class='buttonAns' id='3' type='button' value=''>
+                    <br>
+                    <input class='buttonAns' id='4' type='button' value=''>
+
+                </form>
+            </div>
+
+
+
+
+            <div class='col-3
+             text-left mx-auto mt-5' >
+                <form id='nameDiv' class='text-center'>
+
+                    <input id='player' type='text' style = value='Enter Your Name'>
+                    <input id='again' class='btn btn-warning' value="Click to try again">
+                </form>
+            </div>
+
+            <div id='displayPlayers' class='col-4 text-center'>
+            </div>
+
+        </div>
+
+
+        <div class='row'>
+            <div class='col-9 text-center mx-auto'>
+                <h3 id=valid>
+                    SHOW ME YOUR CODING PASSION!!!
+                </h3>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
     </div>
+
+
+
+
 
     <script type="text/javascript" src="./script.js"></script>
 </body>

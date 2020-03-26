@@ -1,3 +1,5 @@
+
+
 //Element variables
 var h1Elem = document.querySelector('h2');
 var a1 = document.getElementById('1');
@@ -5,11 +7,11 @@ var a2 = document.getElementById('2');
 var a3 = document.getElementById('3');
 var a4 = document.getElementById('4');
 var rowQ = document.getElementById('scoreQuestTime');
-var subBut = document.getElementById('submitbut')
+var again = document.getElementById('again');
 var player = document.getElementById('player');
 var formAns = document.getElementById('answers');
 var formReadyBut = document.getElementById('formReady');
-var nameDiv = document.getElementById('name');
+var nameDiv = document.getElementById('nameDiv');
 var scoreDis = document.getElementById('scoreDis');
 var ansForm = document.getElementById('answers');
 var valid = document.getElementById('valid');
@@ -62,9 +64,14 @@ function countDown() {
         if (counter <= 0) {
             clearInterval(playTime)
             alert('Times is up! Let\'s checkout your score')
-            ansForm.style.display = 'none'
-            rowQ.style.display = 'none'
-            nameDiv.style.display = 'block';
+            a1.style.display = 'none';
+            a2.style.display = 'none';
+            a3.style.display = 'none';
+            a4.style.display = 'none';
+            player.style.display = 'block';
+            h1Elem.innerText = 'Put your name in!!'
+            valid.style.display = 'none'
+
 
         }
     }, 100);
@@ -86,11 +93,15 @@ function questionsSet() {
 //////////////////////////
 //////////////////////////
 
+//Initial Display settings
 
-
-
-
-
+a1.style.display = 'none';
+a2.style.display = 'none';
+a3.style.display = 'none';
+a4.style.display = 'none';
+again.style.display = 'none';
+player.style.display = 'none';
+valid.style.display = 'none';
 
 
 
@@ -103,13 +114,20 @@ if (playerArr === null) {
     // console.log(JSON.parse(localStorage.getItem('players')));
     playerArr = localStorage.getItem(JSON.parse(localStorage.getItem('players')))
     // console.log(playerArr)
-} 
+}
 
 
 
-formReadyBut.addEventListener('click', function () {
-    formReadyBut.style.display = 'none'
-    ansForm.style.display = 'block'
+formReadyBut.addEventListener('click', function (event) {
+    event.stopPropagation()
+    score = 0;
+    counter = 60;
+    formReadyBut.style.display = 'none';
+    a1.style.display = 'block';
+    a2.style.display = 'block';
+    a3.style.display = 'block';
+    a4.style.display = 'block';
+    valid.style.display = 'block';
     countDown()
     ready = true;
     questionsSet(ready);
@@ -118,6 +136,7 @@ formReadyBut.addEventListener('click', function () {
 
 //event delegation event listener for answer form
 formAns.addEventListener('click', function (event) {
+    event.stopPropagation();
     var index = event.target.id;
     index = parseInt(index);
 
@@ -145,14 +164,37 @@ formAns.addEventListener('click', function (event) {
 nameDiv.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        playerName = nameDiv.children[0].value
-        // console.log(playerName);
-        playerArr.push([playerName, score])
-        // console.log(playerArr)
-        localStorage.setItem('players', JSON.stringify(playerArr))
-        playerArr=[];
 
+        playerName = nameDiv.children[0].value;
+        playerArr.push([playerName, score])
+        for (let i = 0; i < playerArr.length; i++) {
+            var newDiv = document.createElement('div');
+            var n = playerArr[i][0];
+            var s = playerArr[i][1];
+            newDiv.innerText = n + ' ' + s
+            console.log(newDiv.innerText)
+            displayPlayers.appendChild(newDiv);
+        }
+
+        localStorage.setItem('players', JSON.stringify(playerArr));
+        score = 0;
+        scoreDis.innerText = 'Score: ' + score;
+        player.value = 'Enter your name'
+        playerArr = [];
+        player.style.display = 'none';
+        h1Elem.innerText = 'Are you ready to go again?! Come one give it a shot....'
+        again.style.display = 'block';
     }
+
+    again.addEventListener('click', function (event) {
+        event.stopPropagation();
+        h1Elem.innerText = 'You will have 60 seconds to answer as many questions as you can. Good Luck!!'
+        playerArr = JSON.parse(localStorage.getItem('players'))
+        displayPlayers.innerHTML = "";
+        formReadyBut.style.display = 'block';
+        again.style.display = 'none';
+    })
 })
+
 
 
