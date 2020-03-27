@@ -127,9 +127,11 @@ function checkLocal() {
     }
 }
 checkLocal();
-
+console.log(playerArr);
 formReadyBut.addEventListener('click', function (event) {
     event.stopPropagation()
+    checkLocal();
+    console.log(playerArr);
     score = 0;
     counter = 60;
     countDown()
@@ -201,7 +203,8 @@ formAns.addEventListener('click', function (event) {
 nameDiv.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
-
+        checkLocal();
+        console.log(playerArr);
         playerName = nameDiv.children[0].value;
         playerArr.push([playerName, score])
         for (let i = 0; i < playerArr.length; i++) {
