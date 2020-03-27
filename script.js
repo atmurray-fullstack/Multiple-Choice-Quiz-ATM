@@ -74,7 +74,7 @@ function countDown() {
 
 
         }
-    }, 10000);
+    }, 1000);
 }
 
 function questionsSet() {
