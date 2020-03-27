@@ -57,9 +57,12 @@ function rando() {
 }
 
 function countDown() {
+    if(oldQ.length===qAll.length){
+        return
+    }
     var playTime = setInterval(function () {
         counter--;
-
+        
         document.getElementById('countDown').innerHTML = 'TIME REMAINING: ' + counter;
         if (counter <= 0) {
             clearInterval(playTime)
@@ -128,13 +131,14 @@ formReadyBut.addEventListener('click', function (event) {
     event.stopPropagation()
     score = 0;
     counter = 60;
+    countDown()
     formReadyBut.style.display = 'none';
     a1.style.display = 'block';
     a2.style.display = 'block';
     a3.style.display = 'block';
     a4.style.display = 'block';
     valid.style.display = 'block';
-    countDown()
+    
     ready = true;
     questionsSet(ready);
 
