@@ -37,7 +37,7 @@ const qAll = [
 
 ]
 // answer value array
-var playerArr = []
+var playerArr = [];
 //array for player name
 var playerName = "";
 //time counter 
@@ -57,12 +57,12 @@ function rando() {
 }
 
 function countDown() {
-    if(oldQ.length===qAll.length){
+    if (oldQ.length === qAll.length) {
         return
     }
     var playTime = setInterval(function () {
         counter--;
-        
+
         document.getElementById('countDown').innerHTML = 'TIME REMAINING: ' + counter;
         if (counter <= 0) {
             clearInterval(playTime)
@@ -118,14 +118,15 @@ valid.style.display = 'none';
 h1Elem.innerText = 'You will have 60 seconds to answer as many questions as you can. Good Luck!!'
 playerArr = JSON.parse(localStorage.getItem('players'))
 
-if (playerArr === null) {
-    localStorage.setItem('players', JSON.stringify([['Players','Scores']]));
-    // console.log(JSON.parse(localStorage.getItem('players')));
-    playerArr = localStorage.getItem(JSON.parse(localStorage.getItem('players')))
-    // console.log(playerArr)
+function checkLocal() {
+    if (playerArr === null) {
+        localStorage.setItem('players', JSON.stringify([['Players', 'Scores']]));
+        // console.log(JSON.parse(localStorage.getItem('players')));
+        playerArr = localStorage.getItem(JSON.parse(localStorage.getItem('players')))
+        // console.log(playerArr)
+    }
 }
-
-
+checkLocal();
 
 formReadyBut.addEventListener('click', function (event) {
     event.stopPropagation()
@@ -138,7 +139,7 @@ formReadyBut.addEventListener('click', function (event) {
     a3.style.display = 'block';
     a4.style.display = 'block';
     valid.style.display = 'block';
-    
+
     ready = true;
     questionsSet(ready);
 
@@ -177,16 +178,16 @@ formAns.addEventListener('click', function (event) {
         oldQ.push(randomQ);
         console.log(oldQ);
     } else {
-        
+
         counter = 0;
         alert('You have answered all the questions! Good Job!')
-            a1.style.display = 'none';
-            a2.style.display = 'none';
-            a3.style.display = 'none';
-            a4.style.display = 'none';
-            player.style.display = 'block';
-            h1Elem.innerText = 'Put your name in!!'
-            valid.style.display = 'none'
+        a1.style.display = 'none';
+        a2.style.display = 'none';
+        a3.style.display = 'none';
+        a4.style.display = 'none';
+        player.style.display = 'block';
+        h1Elem.innerText = 'Put your name in!!'
+        valid.style.display = 'none'
     }
 
     h1Elem.innerText = qAll[randomQ][0];
