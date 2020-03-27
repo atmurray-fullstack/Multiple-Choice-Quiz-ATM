@@ -122,7 +122,7 @@ function checkLocal() {
     if (playerArr === null) {
         localStorage.setItem('players', JSON.stringify([['Players', 'Scores']]));
         // console.log(JSON.parse(localStorage.getItem('players')));
-        playerArr = localStorage.getItem(JSON.parse(localStorage.getItem('players')))
+        playerArr = JSON.parse(localStorage.getItem('players'));
         // console.log(playerArr)
     }
 }
