@@ -74,13 +74,13 @@ function countDown() {
 
 
         }
-    }, 1000);
+    }, 10000);
 }
 
 function questionsSet() {
     if (ready) {
         randomQ = rando();
-        noRepeat(randomQ);
+        oldQ.push(randomQ);
         //set button value equal to answers
         a1.value = qAll[randomQ][1][0];
         a2.value = qAll[randomQ][2][0];
@@ -88,33 +88,12 @@ function questionsSet() {
         a4.value = qAll[randomQ][4][0];
         //set h1 innerText equal to question
         h1Elem.innerText = qAll[randomQ][0];
+        console.log(randomQ);
 
     }
 }
 
 
-function noRepeat(x) {
-    var reRun = false;
-    if (oldQ.length === qAll.length) {
-        counter = 0;
-        oldQ=[];
-    
-
-    } else {
-        for (let i = 0; i < oldQ.length; i++) {
-            if (x === oldQ[i]) {
-                reRun = true;
-                break;
-            }
-        }
-    }
-    if (reRun === true) {
-        randomQ = rando();
-        randomQ = noRepeat(randomQ);
-    }
-    oldQ.push(randomQ);
-    return randomQ;
-}
 
 
 //////////////////////////
@@ -167,10 +146,9 @@ formAns.addEventListener('click', function (event) {
     var index = event.target.id;
     index = parseInt(index);
 
-
     if (qAll[randomQ][index][1]) {
         valid.innerText = 'Correct Answer';
-        score++
+        score++;
         scoreDis.innerText = 'Score: ' + score;
 
     } else {
@@ -178,10 +156,34 @@ formAns.addEventListener('click', function (event) {
         valid.innerText = 'Incorrect Answer => -5 Seconds';
     }
 
+    if (oldQ.length !== qAll.length && oldQ.length < qAll.length) {
+        randomQ = rando();
+        var i = 0;
 
-    randomQ = rando()
+        while (i < oldQ.length) {
+            if (randomQ !== oldQ[i]) {
+                i++
 
-    noRepeat(randomQ);
+            } else {
+                randomQ = rando();
+                i = 0;
+            }
+        }
+
+        oldQ.push(randomQ);
+        console.log(oldQ);
+    } else {
+        
+        counter = 0;
+        alert('You have answered all the questions! Good Job!')
+            a1.style.display = 'none';
+            a2.style.display = 'none';
+            a3.style.display = 'none';
+            a4.style.display = 'none';
+            player.style.display = 'block';
+            h1Elem.innerText = 'Put your name in!!'
+            valid.style.display = 'none'
+    }
 
     h1Elem.innerText = qAll[randomQ][0];
     a1.value = qAll[randomQ][1][0];
@@ -214,6 +216,7 @@ nameDiv.addEventListener('keypress', function (event) {
         player.style.display = 'none';
         h1Elem.innerText = 'Are you ready to go again?! Come one give it a shot....'
         again.style.display = 'block';
+        oldQ = [];
     }
 
     again.addEventListener('click', function (event) {
