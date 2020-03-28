@@ -20,19 +20,19 @@ var valid = document.getElementById('valid');
 
 //question array
 const qAll = [
-    ['question1', ['answer1-1', true], ['answer1-2', false], ['answer1-3', false], ['answer1-4', false]],
+    ['question1', ['answer1-1', false], ['answer1-2', true], ['answer1-3', false], ['answer1-4', false]],
     ['question2', ['answer2-1', true], ['answer2-2', false], ['answer2-3', false], ['answer2-4', false]],
-    ['question3', ['answer3-1', true], ['answer3-2', false], ['answer3-3', false], ['answer3-4', false]],
-    ['question4', ['answer4-1', true], ['answer4-2', false], ['answer4-3', false], ['answer4-4', false]],
-    ['question5', ['answer5-1', true], ['answer5-2', false], ['answer5-3', false], ['answer5-4', false]],
+    ['question3', ['answer3-1', false], ['answer3-2', false], ['answer3-3', true], ['answer3-4', false]],
+    ['question4', ['answer4-1', false], ['answer4-2', true], ['answer4-3', false], ['answer4-4', false]],
+    ['question5', ['answer5-1', false], ['answer5-2', false], ['answer5-3', false], ['answer5-4', true]],
     ['question6', ['answer6-1', true], ['answer6-2', false], ['answer6-3', false], ['answer6-4', false]],
-    ['question7', ['answer7-1', true], ['answer7-2', false], ['answer7-3', false], ['answer7-4', false]],
-    ['question8', ['answer8-1', true], ['answer8-2', false], ['answer8-3', false], ['answer8-4', false]],
-    ['question9', ['answer9-1', true], ['answer9-2', false], ['answer9-3', false], ['answer9-4', false]],
+    ['question7', ['answer7-1', false], ['answer7-2', false], ['answer7-3', true], ['answer7-4', false]],
+    ['question8', ['answer8-1', false], ['answer8-2', false], ['answer8-3', false], ['answer8-4', true]],
+    ['question9', ['answer9-1', false], ['answer9-2', true], ['answer9-3', false], ['answer9-4', false]],
     ['question10', ['answer10-1', true], ['answer10-2', false], ['answer10-3', false], ['answer10-4', false]],
-    ['question11', ['answer11-1', true], ['answer11-2', false], ['answer11-3', false], ['answer11-4', false]],
+    ['question11', ['answer11-1', false], ['answer11-2', false], ['answer11-3', false], ['answer11-4', true]],
     ['question12', ['answer12-1', true], ['answer12-2', false], ['answer12-3', false], ['answer12-4', false]],
-    ['question13', ['answer13-1', true], ['answer13-2', false], ['answer13-3', false], ['answer13-4', false]]
+    ['question13', ['answer13-1', false], ['answer13-2', true], ['answer13-3', false], ['answer13-4', false]]
 
 
 ]
@@ -91,7 +91,7 @@ function questionsSet() {
         a4.value = qAll[randomQ][4][0];
         //set h1 innerText equal to question
         h1Elem.innerText = qAll[randomQ][0];
-        console.log(randomQ);
+        // console.log(randomQ);
 
     }
 }
@@ -123,18 +123,18 @@ function checkLocal() {
         localStorage.setItem('players', JSON.stringify([['Players', 'Scores']]));
         // console.log(JSON.parse(localStorage.getItem('players')));
         playerArr = JSON.parse(localStorage.getItem('players'));
-        // console.log(playerArr)
+        // console.log(playerArr);
     }
 }
 checkLocal();
-console.log(playerArr);
+
 formReadyBut.addEventListener('click', function (event) {
     event.stopPropagation()
     checkLocal();
-    console.log(playerArr);
     score = 0;
     counter = 60;
     countDown()
+
     formReadyBut.style.display = 'none';
     a1.style.display = 'block';
     a2.style.display = 'block';
@@ -178,7 +178,7 @@ formAns.addEventListener('click', function (event) {
         }
 
         oldQ.push(randomQ);
-        console.log(oldQ);
+        // console.log(oldQ);
     } else {
 
         counter = 0;
@@ -204,7 +204,7 @@ nameDiv.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         checkLocal();
-        console.log(playerArr);
+        // console.log(playerArr);
         playerName = nameDiv.children[0].value;
         playerArr.push([playerName, score])
         for (let i = 0; i < playerArr.length; i++) {
@@ -212,7 +212,7 @@ nameDiv.addEventListener('keypress', function (event) {
             var n = playerArr[i][0];
             var s = playerArr[i][1];
             newDiv.innerText = n + ' ' + s
-            console.log(newDiv.innerText)
+            // console.log(newDiv.innerText)
             displayPlayers.appendChild(newDiv);
         }
 
