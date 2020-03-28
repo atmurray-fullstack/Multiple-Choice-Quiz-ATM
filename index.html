@@ -8,10 +8,12 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Righteous|Titan+One&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Righteous|Titan+One&display=swap"
+        rel="stylesheet">
+</head>
 
 <body>
-    <div class='container-fluid'>
+    <div class='container'>
 
         <!-- Top row container h1 and <p> for countdown timer-->
         <div id='scoreQuestTime' class='row mt-5 mx-auto'>
@@ -42,8 +44,8 @@
 
 
         <!--Row for answer buttons-->
-        <div class='row mt-5'>
-            <div class='col-4 mx auto'>
+        <div class='row mt-1'>
+            <div class='col-6 mx auto'>
                 <!--Answer button form-->
                 <form id='answers'>
                     <input class='buttonAns' id='1' type='button' value=''>
@@ -60,18 +62,23 @@
 
 
 
-            <div class='col-3
-             text-left mx-auto mt-5'>
+            <div class='col-6
+             text-left mx-auto ml-1 mt-5'>
                 <form id='nameDiv' class='text-center'>
 
-                    <input id='player' class = 'input-lg col-12 type='text' value='Enter Your Name'>
-                    <input id='again' class='btn btn-warning btn-lg' value="Click to try again">
+                    <input id='player' class='input-lg col-12 type=' text' value='Enter Your Name'>
+                    <input id='again' class='btn btn-warning' value="Click to try again">
                 </form>
             </div>
 
-            <div id='displayPlayers' class='col-4 text-center'>
-            </div>
+            
 
+        </div>
+        <div class='row'>
+            <div class='col-6 mx auto'>
+                <div id='displayPlayers' class='text-center'>
+                </div>
+            </div>
         </div>
 
 
@@ -81,16 +88,10 @@
                     SHOW ME YOUR CODING PASSION!!!
                 </h3>
             </div>
-
-
         </div>
 
 
-
-
-
-
-
+    </div>
 
     </div>
 
