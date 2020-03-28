@@ -133,7 +133,7 @@ formReadyBut.addEventListener('click', function (event) {
     checkLocal();
     score = 0;
     counter = 60;
-    countDown()
+    countDown();
 
     formReadyBut.style.display = 'none';
     a1.style.display = 'block';
